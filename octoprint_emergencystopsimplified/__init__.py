@@ -55,7 +55,7 @@ class Emergency_stop_simplifiedPlugin(octoprint.plugin.StartupPlugin,
     def _setup_button(self):
         if self.sensor_enabled():
             self._logger.info("Setting up button.")
-            self._logger.info("Using Board Mode")
+            self._logger.info("Using BCM Mode")
             GPIO.setmode(GPIO.BCM)
             self._logger.info("Emergency Stop button active on GPIO Pin [%s]" % self.pin)
             if self.switch is 0:
@@ -91,7 +91,7 @@ class Emergency_stop_simplifiedPlugin(octoprint.plugin.StartupPlugin,
 
         if not self.sensor_enabled():
             if event is Events.USER_LOGGED_IN:
-                self._plugin_manager.send_plugin_message(self._identifier, dict(type="info", autoClose=True, msg="Don' forget to configure this plugin."))
+                self._plugin_manager.send_plugin_message(self._identifier, dict(type="info", autoClose=True, msg="Don't forget to configure this plugin."))
             elif event is Events.PRINT_STARTED:
                 self._plugin_manager.send_plugin_message(self._identifier, dict(type="info", autoClose=True, msg="You may have forgotten to configure this plugin."))
 
